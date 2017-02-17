@@ -1,5 +1,7 @@
 {
   "name": "frontend",
   "dependencies": {
+    "bootswatch": "^3.3.7",
+    "flexboxgrid": "^6.3.2"
   }
 }

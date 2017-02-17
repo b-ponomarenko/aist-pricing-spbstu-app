@@ -1,0 +1,47 @@
+$spacings: (
+  xxxs: 2px,
+  xxs: 4px,
+  xs: 8px,
+  s: 12px,
+  m: 16px,
+  l: 24px,
+  xl: 32px,
+  xxl: 48px
+);
+
+$prefix: '.ai';
+
+@each $suffix, $size in $spacings {
+  #{$prefix}-m-t--#{$suffix} {
+    margin-top: $size !important;
+  }
+
+  #{$prefix}-m-b--#{$suffix} {
+    margin-bottom: $size !important;
+  }
+
+  #{$prefix}-m-l--#{$suffix} {
+    margin-left: $size !important;
+  }
+
+  #{$prefix}-m-r--#{$suffix} {
+    margin-right: $size !important;
+  }
+
+
+  #{$prefix}-p-t--#{$suffix} {
+    padding-top: $size !important;
+  }
+
+  #{$prefix}-p-b--#{$suffix} {
+    padding-bottom: $size !important;
+  }
+
+  #{$prefix}-p-l--#{$suffix} {
+    padding-left: $size !important;
+  }
+
+  #{$prefix}-p-r--#{$suffix} {
+    padding-right: $size !important;
+  }
+};

@@ -1,0 +1,14 @@
+.centered-modal {
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  padding: 0;
+
+  & button.close {
+    color: #333333;
+  }
+
+  &__dialog {
+    width: 800px;
+  }
+}

@@ -1,1 +1,83 @@
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum voluptatem, quos, beatae unde saepe itaque, reprehenderit accusamus harum nostrum ea error doloremque voluptas quibusdam aperiam nihil quia esse fuga recusandae.
+<div class="row ai-m-b--l">
+  <div class="col-xs-12 text-right">
+    <button class="btn btn-primary" {{action (pipe (action "createTank") (toggle "showAddTankModal" this))}}>Добавить
+      бак
+    </button>
+  </div>
+</div>
+
+<div class="row ai-m-b--l">
+  <table class="table table-hover table-bordered">
+    <thead>
+    <tr>
+      <th>Название</th>
+      <th>Диаметр</th>
+      <th>Высота обечайки</th>
+      <th>Толщина стенки обечайки</th>
+      <th>Высота днища</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each tanks as |tank|}}
+      <tr>
+        <td>{{tank.name}}</td>
+        <td>{{tank.diameter}}</td>
+        <td>{{tank.shellHeight}}</td>
+        <td>{{tank.shellThickness}}</td>
+        <td>{{tank.bottomHeight}}</td>
+      </tr>
+    {{/each}}
+    </tbody>
+  </table>
+</div>
+
+{{#if showAddTankModal}}
+  {{#modals/centered-modal
+      headerText="Добавить бак"
+      close=(action (toggle "showAddTankModal" this))
+      save=(action "saveTank")
+  }}
+    <div class="row ai-m-b--s">
+      <div class="col-xs-4">Название бака</div>
+      <div class="col-xs-8">
+        {{input value=newTank.name class="form-control" placeholder="Введите название бака"}}
+      </div>
+    </div>
+    <div class="row ai-m-b--s">
+      <div class="col-xs-4">Диаметр</div>
+      <div class="col-xs-8">
+        <div class="input-group">
+          {{input value=newTank.diameter class="form-control" placeholder="Введите название бака"}}
+          <span class="input-group-addon">мм</span>
+        </div>
+      </div>
+    </div>
+    <div class="row ai-m-b--s">
+      <div class="col-xs-4">Высота обечайки</div>
+      <div class="col-xs-8">
+        <div class="input-group">
+          {{input value=newTank.shellHeight class="form-control" placeholder="Введите высоту обечайки"}}
+          <span class="input-group-addon">мм</span>
+        </div>
+      </div>
+    </div>
+    <div class="row ai-m-b--s">
+      <div class="col-xs-4">Толщина стенки обечайки</div>
+      <div class="col-xs-8">
+        <div class="input-group">
+          {{input value=newTank.shellThickness class="form-control" placeholder="Введите толщину стенки обечайки"}}
+          <span class="input-group-addon">мм</span>
+        </div>
+      </div>
+    </div>
+    <div class="row ai-m-b--s">
+      <div class="col-xs-4">Высота днища</div>
+      <div class="col-xs-8">
+        <div class="input-group">
+          {{input value=newTank.bottomHeight class="form-control" placeholder="Введите высоту днища"}}
+          <span class="input-group-addon">мм</span>
+        </div>
+      </div>
+    </div>
+  {{/modals/centered-modal}}
+{{/if}}

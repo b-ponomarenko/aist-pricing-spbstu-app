@@ -1,0 +1,211 @@
+export default [{
+  "id": 1,
+  "name": "It",
+  "diameter": 68,
+  "shellHeight": 83,
+  "shellThickness": 32,
+  "bottomHeight": 21
+}, {
+  "id": 2,
+  "name": "Cardify",
+  "diameter": 30,
+  "shellHeight": 87,
+  "shellThickness": 6,
+  "bottomHeight": 53
+}, {
+  "id": 3,
+  "name": "Opela",
+  "diameter": 37,
+  "shellHeight": 1,
+  "shellThickness": 1,
+  "bottomHeight": 44
+}, {
+  "id": 4,
+  "name": "Asoka",
+  "diameter": 47,
+  "shellHeight": 87,
+  "shellThickness": 5,
+  "bottomHeight": 72
+}, {
+  "id": 5,
+  "name": "Fintone",
+  "diameter": 68,
+  "shellHeight": 93,
+  "shellThickness": 14,
+  "bottomHeight": 66
+}, {
+  "id": 6,
+  "name": "Keylex",
+  "diameter": 66,
+  "shellHeight": 10,
+  "shellThickness": 47,
+  "bottomHeight": 95
+}, {
+  "id": 7,
+  "name": "Stringtough",
+  "diameter": 44,
+  "shellHeight": 89,
+  "shellThickness": 27,
+  "bottomHeight": 76
+}, {
+  "id": 8,
+  "name": "Asoka",
+  "diameter": 13,
+  "shellHeight": 77,
+  "shellThickness": 92,
+  "bottomHeight": 12
+}, {
+  "id": 9,
+  "name": "Namfix",
+  "diameter": 7,
+  "shellHeight": 53,
+  "shellThickness": 19,
+  "bottomHeight": 42
+}, {
+  "id": 10,
+  "name": "Prodder",
+  "diameter": 82,
+  "shellHeight": 25,
+  "shellThickness": 69,
+  "bottomHeight": 23
+}, {
+  "id": 11,
+  "name": "Keylex",
+  "diameter": 20,
+  "shellHeight": 35,
+  "shellThickness": 14,
+  "bottomHeight": 38
+}, {
+  "id": 12,
+  "name": "Domainer",
+  "diameter": 96,
+  "shellHeight": 92,
+  "shellThickness": 13,
+  "bottomHeight": 42
+}, {
+  "id": 13,
+  "name": "Bytecard",
+  "diameter": 21,
+  "shellHeight": 59,
+  "shellThickness": 58,
+  "bottomHeight": 55
+}, {
+  "id": 14,
+  "name": "Alphazap",
+  "diameter": 43,
+  "shellHeight": 8,
+  "shellThickness": 21,
+  "bottomHeight": 11
+}, {
+  "id": 15,
+  "name": "Trippledex",
+  "diameter": 56,
+  "shellHeight": 93,
+  "shellThickness": 15,
+  "bottomHeight": 77
+}, {
+  "id": 16,
+  "name": "Tin",
+  "diameter": 67,
+  "shellHeight": 69,
+  "shellThickness": 6,
+  "bottomHeight": 47
+}, {
+  "id": 17,
+  "name": "Toughjoyfax",
+  "diameter": 69,
+  "shellHeight": 81,
+  "shellThickness": 46,
+  "bottomHeight": 26
+}, {
+  "id": 18,
+  "name": "Asoka",
+  "diameter": 62,
+  "shellHeight": 64,
+  "shellThickness": 70,
+  "bottomHeight": 27
+}, {
+  "id": 19,
+  "name": "Tres-Zap",
+  "diameter": 50,
+  "shellHeight": 56,
+  "shellThickness": 9,
+  "bottomHeight": 35
+}, {
+  "id": 20,
+  "name": "Konklab",
+  "diameter": 23,
+  "shellHeight": 97,
+  "shellThickness": 81,
+  "bottomHeight": 36
+}, {
+  "id": 21,
+  "name": "Asoka",
+  "diameter": 36,
+  "shellHeight": 86,
+  "shellThickness": 79,
+  "bottomHeight": 34
+}, {
+  "id": 22,
+  "name": "Overhold",
+  "diameter": 61,
+  "shellHeight": 90,
+  "shellThickness": 17,
+  "bottomHeight": 48
+}, {
+  "id": 23,
+  "name": "Zathin",
+  "diameter": 64,
+  "shellHeight": 91,
+  "shellThickness": 18,
+  "bottomHeight": 19
+}, {
+  "id": 24,
+  "name": "Alpha",
+  "diameter": 16,
+  "shellHeight": 96,
+  "shellThickness": 90,
+  "bottomHeight": 38
+}, {
+  "id": 25,
+  "name": "Flexidy",
+  "diameter": 32,
+  "shellHeight": 53,
+  "shellThickness": 27,
+  "bottomHeight": 23
+}, {
+  "id": 26,
+  "name": "Alpha",
+  "diameter": 47,
+  "shellHeight": 31,
+  "shellThickness": 28,
+  "bottomHeight": 36
+}, {
+  "id": 27,
+  "name": "Toughjoyfax",
+  "diameter": 60,
+  "shellHeight": 17,
+  "shellThickness": 32,
+  "bottomHeight": 76
+}, {
+  "id": 28,
+  "name": "Y-Solowarm",
+  "diameter": 70,
+  "shellHeight": 98,
+  "shellThickness": 33,
+  "bottomHeight": 7
+}, {
+  "id": 29,
+  "name": "Prodder",
+  "diameter": 23,
+  "shellHeight": 35,
+  "shellThickness": 12,
+  "bottomHeight": 31
+}, {
+  "id": 30,
+  "name": "Zathin",
+  "diameter": 29,
+  "shellHeight": 53,
+  "shellThickness": 71,
+  "bottomHeight": 48
+}]

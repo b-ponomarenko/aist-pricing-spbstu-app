@@ -1,11 +1,7 @@
 <div class="row ai-m-b--l">
   <div class="col-xs-12 text-right">
-    <button class="btn btn-primary" {{action (toggle "showAddComponentModal" this)}}>Добавить раздел комплектующих</button>
+    <button class="btn btn-primary" {{action (pipe (action "createComponent") (toggle "showAddComponentModal" this))}}>Добавить раздел комплектующих</button>
   </div>
-</div>
-
-<div class="row">
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut culpa deserunt fugit iure placeat, possimus rem sint tenetur veniam vitae? Dolore illum nemo nobis nostrum officiis provident quasi ratione. Dolorum?
 </div>
 
 {{#if showAddComponentModal}}
@@ -14,11 +10,15 @@
       close=(action (toggle "showAddComponentModal" this))
       save=(action "saveComponent")
   }}
-    <div class="row">
+    <div class="row ai-m-b--s">
       <div class="col-xs-3">Название</div>
       <div class="col-xs-9">
-        {{input value=componentName class="form-control" placeholder="Введите название комплектующего изделия"}}
+        {{input value=newComponent.title class="form-control" placeholder="Введите название комплектующего изделия"}}
       </div>
     </div>
+    <div class="row">
+      <h4>Введите необходимые параметры комплектующего изделия</h4>
+    </div>
+    {{params-list component=newComponent}}
   {{/modals/centered-modal}}
 {{/if}}

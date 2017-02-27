@@ -7,12 +7,15 @@ const {
 } = Ember;
 
 export default Controller.extend({
-  componentName: null,
+  newComponent: null,
 
   actions: {
-    saveComponent() {
-      console.log(get(this, 'componentName'));
-      set(this, 'componentName', null);
+    createComponent() {
+      set(this, 'newComponent', {});
+    },
+    async saveComponent() {
+      const component = get(this, 'newComponent');
+      await get(this, 'store').createRecord('component', component).save();
     }
   }
 });

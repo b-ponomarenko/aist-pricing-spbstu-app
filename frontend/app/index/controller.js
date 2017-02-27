@@ -16,8 +16,7 @@ export default Ember.Controller.extend({
 
   actions: {
     createTank() {
-      const newTank = {};
-      set(this, 'newTank', newTank);
+      set(this, 'newTank', {});
     },
     saveTank() {
       const tank = get(this, 'newTank');

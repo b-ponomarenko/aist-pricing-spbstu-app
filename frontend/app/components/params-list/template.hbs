@@ -1,0 +1,12 @@
+{{#each component.params as |param index|}}
+  <div class="col-xs-3">
+    Название параметра
+  </div>
+  <div class="col-xs-7  ai-m-b--s">
+    {{input value=param.title class="form-control" placeholder="Введите название комплектующего изделия"}}
+  </div>
+  <div class="col-xs-2 center-xs">
+    <button class="btn btn-default" {{action "addParam"}}><span class="glyphicon glyphicon-plus"></span></button>
+    <button class="btn btn-default" {{action "removeParam" param}}><span class="glyphicon glyphicon-minus"></span></button>
+  </div>
+{{/each}}

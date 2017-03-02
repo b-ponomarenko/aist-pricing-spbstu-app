@@ -1,8 +1,19 @@
 <div class="row ai-m-b--l">
   <div class="col-xs-12 text-right">
-    <button class="btn btn-primary" {{action (pipe (action "createComponent") (toggle "showAddComponentModal" this))}}>Добавить раздел комплектующих</button>
+    <button class="btn btn-primary" {{action (pipe (action "createComponent") (toggle "showAddComponentModal" this))}}>
+      Добавить раздел комплектующих
+    </button>
   </div>
 </div>
+
+{{#each components as |component|}}
+  <div class="row middle-xs ai-m-b--s">
+    <h2 class="col-xs">{{component.title}}</h2>
+    <div>
+      <button class="btn btn-default" {{action (pipe (action "createComponentType" component) (toggle "showAddComponentTypeModal" this))}}>Добавить {{component.single}}</button>
+    </div>
+  </div>
+{{/each}}
 
 {{#if showAddComponentModal}}
   {{#modals/centered-modal
@@ -10,15 +21,44 @@
       close=(action (toggle "showAddComponentModal" this))
       save=(action "saveComponent")
   }}
-    <div class="row ai-m-b--s">
+    <div class="row ai-m-b--s middle-xs">
       <div class="col-xs-3">Название</div>
       <div class="col-xs-9">
         {{input value=newComponent.title class="form-control" placeholder="Введите название комплектующего изделия"}}
+      </div>
+    </div>
+    <div class="row ai-m-b--s middle-xs">
+      <div class="col-xs-3">Единственное число</div>
+      <div class="col-xs-9">
+        {{input value=newComponent.single class="form-control" placeholder="Введите название комплектующего изделия в единственном числе"}}
       </div>
     </div>
     <div class="row">
       <h4>Введите необходимые параметры комплектующего изделия</h4>
     </div>
     {{params-list component=newComponent}}
+  {{/modals/centered-modal}}
+{{/if}}
+
+{{#if showAddComponentTypeModal}}
+  {{#modals/centered-modal
+      headerText="Добавить новый тип комплектующих"
+      close=(action (toggle "showAddComponentTypeModal" this))
+      save=(action "saveComponentType")
+  }}
+    <div class="row ai-m-b--s middle-xs">
+      <div class="col-xs-3">Наименование</div>
+      <div class="col-xs-9">
+        {{input value=newComponentType.title class="form-control" placeholder="Введите наименование"}}
+      </div>
+    </div>
+    {{#each componentFields as |componentField|}}
+      <div class="row ai-m-b--s middle-xs">
+        <div class="col-xs-3">{{componentField.title}}</div>
+        <div class="col-xs-9">
+          <input value={{get newComponentType componentField.name}} class="form-control" oninput={{action (mut (get newComponentType componentField.name)) value="target.value"}}>
+        </div>
+      </div>
+    {{/each}}
   {{/modals/centered-modal}}
 {{/if}}

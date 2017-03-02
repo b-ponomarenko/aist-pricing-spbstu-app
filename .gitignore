@@ -1,7 +1,1 @@
 .idea/
-.gitignore
-app.js
-bin/
-node_modules/
-routes/
-yarn.lock

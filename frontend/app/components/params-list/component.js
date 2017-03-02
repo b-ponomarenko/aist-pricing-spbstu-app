@@ -7,18 +7,18 @@ const {
 } = Ember;
 
 export default Ember.Component.extend({
-  classNames: ['row'],
+  classNames: ['row', 'middle-xs'],
 
   didReceiveAttrs() {
-    set(this, 'component.params', A());
-    get(this, 'component.params').pushObject({});
+    set(this, 'component.fields', A());
+    get(this, 'component.fields').pushObject({});
   },
   actions: {
     addParam() {
-      get(this, 'component.params').pushObject({});
+      get(this, 'component.fields').pushObject({});
     },
     removeParam(param) {
-      get(this, 'component.params').removeObject(param);
+      get(this, 'component.fields').removeObject(param);
     }
   }
 });

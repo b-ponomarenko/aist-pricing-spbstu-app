@@ -10,6 +10,7 @@ const bodyParser = require('body-parser');
 const config = require('./config');
 const index = require('./routes/index');
 const components = require('./routes/components');
+const componentTypes = require('./routes/component-types');
 
 const app = express();
 mongoose.Promise = bluebird;
@@ -24,6 +25,7 @@ app.use(cookieParser());
 
 app.use('/', index);
 app.use('/components', components);
+app.use('/componentTypes', componentTypes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

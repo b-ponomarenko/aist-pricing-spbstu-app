@@ -23,7 +23,7 @@ export default Controller.extend({
       set(this, 'newComponent', {});
     },
     createComponentType(componentModel) {
-      set(this, 'newComponentType', {});
+      set(this, 'newComponentType', { component: get(componentModel, 'id') });
       set(this, 'componentModel', componentModel);
     },
     async saveComponent() {

@@ -30,8 +30,9 @@ export default Controller.extend({
       const component = get(this, 'newComponent');
       await get(this, 'store').createRecord('component', component).save();
     },
-    saveComponentType() {
-      console.log(get(this, 'newComponentType'));
+    async saveComponentType() {
+      const componentType = get(this, 'newComponentType');
+      get(this, 'store').createRecord('component-type', componentType).save();
     }
   }
 });

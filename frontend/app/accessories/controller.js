@@ -10,7 +10,7 @@ const {
 export default Controller.extend({
   newComponent: null,
 
-  @oneWay('model.components') components,
+  @oneWay('model.components') categories,
 
   @map('componentModel.fields', function(fields) {
       const title = get(fields, 'title');

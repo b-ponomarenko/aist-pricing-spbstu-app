@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const { save, get } = require('../controllers/components');
+const { save, get } = require('../controllers/categories');
 
-/* GET components listing. */
 router.get('/', get);
 router.post('/', save);
 

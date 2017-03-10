@@ -4,7 +4,7 @@ const { translate } = require('../utils/translate');
 module.exports = {
   async get(req, res, next) {
     const components = await Component.find();
-    res.json({ components });
+    res.json({ components }, 200);
   },
 
   async save(

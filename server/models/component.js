@@ -1,8 +1,20 @@
-const mongoose = require('mongoose');
-
-const schema = new mongoose.Schema({
-  title: { type: String, required: true },
-  fields: { type: Array, required: true }
-});
-
-module.exports = mongoose.model('Component', schema);
+'use strict';
+module.exports = function(sequelize, DataTypes) {
+  const Component = sequelize.define('Component', {
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
+  }, {
+    classMethods: {
+      associate: function(models) {
+        Component.belongsTo(models.Category, {
+          foreignKey: 'categoryId',
+          onUpdate: 'CASCADE',
+          onDelete: 'CASCADE'
+        })
+      }
+    }
+  });
+  return Component;
+};

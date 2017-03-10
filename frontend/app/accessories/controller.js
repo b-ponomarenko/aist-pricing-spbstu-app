@@ -10,7 +10,7 @@ const {
 export default Controller.extend({
   newComponent: null,
 
-  @oneWay('model') components,
+  @oneWay('model.components') components,
 
   @map('componentModel.fields', function(fields) {
       const title = get(fields, 'title');
@@ -23,6 +23,7 @@ export default Controller.extend({
       set(this, 'newComponent', {});
     },
     createComponentType(componentModel) {
+      debugger;
       set(this, 'newComponentType', { component: get(componentModel, 'id') });
       set(this, 'componentModel', componentModel);
     },

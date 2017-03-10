@@ -4,7 +4,7 @@ import EmberReservedWords from "../helpers/constants/ember-reserved-words";
 
 const OWNER = '__OWNER__';
 
-export default DS.RESTSerializer.extend(RestSerializerMixin, {
+export default DS.RESTSerializer.extend(RestSerializerMixin, DS.EmbeddedRecordsMixin, {
   serialize(snapshot, object) {
     const componentType = this._super(...arguments);
     const record = snapshot.record;

@@ -5,5 +5,5 @@ export default Model.extend({
   @attr('string') title,
   @attr('string') single,
   @attr() fields,
-  @hasMany('component-type') componentType
+  @hasMany('component-type') componentTypes
 });

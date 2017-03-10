@@ -1,6 +1,6 @@
 import {moduleForModel, test} from "ember-qunit";
 
-moduleForModel('component-type', 'Unit | Model | component type', {
+moduleForModel('component-attribute-value', 'Unit | Model | component attribute value', {
   // Specify the other units that are required for this test.
   needs: []
 });

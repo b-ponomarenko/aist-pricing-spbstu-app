@@ -3,5 +3,5 @@ import {attr, hasMany} from "ember-computed-decorators/ember-data";
 
 export default Model.extend({
   @attr('string') title,
-  @hasMany('component-attribute-value') componentAttributeValues
+  @hasMany components
 });

@@ -1,14 +1,14 @@
-const { Component } = require('../models');
+const { Attribute } = require('../models');
 
 module.exports = {
   async getById(req, res, next) {
     try {
-      let component = await Component
-        .findById(req.params.componentId, {
+      let attribute = await Attribute
+        .findById(req.params.attributeId, {
           attributes: ['id', 'title']
         });
 
-      return res.json({ component });
+      return res.json({ attribute });
     } catch (e) {
       return res.send(e);
     }

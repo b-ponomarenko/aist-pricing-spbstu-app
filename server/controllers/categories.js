@@ -1,20 +1,31 @@
-const { Category, Component } = require('../models');
+const { Category, Component, CategoryAttribute, Attribute } = require('../models');
 
 module.exports = {
   async get(req, res, next) {
     try {
-      const categories = await Category
+      let categories = await Category
         .findAll({
           include: [{
             model: Component,
-            as: 'components',
-            attributes: ['id']
+            as: 'components'
+          }, {
+            model: CategoryAttribute,
+            as: 'attributes',
+            attributes: ['attributeId']
           }]
         });
 
-      res.json({ categories });
+      categories = categories.map((category) => {
+        const { id, title, createdAt, updatedAt } = category;
+        const components = category.components.map(component => component.id);
+        const attributes = category.attributes.map(attribute => attribute.attributeId);
+        return { id, title, components, attributes };
+      });
+
+      return res.json({ categories });
     } catch (e) {
-      res.json(e);
+      console.log(e);
+      return res.send(e);
     }
   },
 

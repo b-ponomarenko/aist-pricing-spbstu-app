@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const { save, getById } = require('../controllers/components');
+const { save, getById } = require('../controllers/attributes');
 
-router.get('/:componentId', getById);
+router.get('/:attributeId', getById);
 router.post('/', save);
 
 module.exports = router;

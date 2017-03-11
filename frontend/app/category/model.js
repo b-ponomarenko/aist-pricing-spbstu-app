@@ -3,5 +3,6 @@ import {attr, hasMany} from "ember-computed-decorators/ember-data";
 
 export default Model.extend({
   @attr('string') title,
-  @hasMany categories
+  @hasMany('component', { async: true }) components,
+  @hasMany('attribute', { async: true }) attributes
 });

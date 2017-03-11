@@ -1,17 +1,20 @@
 <div class="row ai-m-b--l">
   <div class="col-xs-12 text-right">
     <button class="btn btn-primary" {{action (pipe (action "createComponent") (toggle "showAddComponentModal" this))}}>
-      Добавить раздел комплектующих
+      Добавить категорию
     </button>
   </div>
 </div>
 
-{{#each components as |component|}}
+{{#each categories as |category|}}
   <div class="row middle-xs ai-m-b--s">
-    <h2 class="col-xs">{{component.title}}</h2>
+    <h2 class="col-xs">{{category.title}}</h2>
     <div>
-      <button class="btn btn-default" {{action (pipe (action "createComponentType" component) (toggle "showAddComponentTypeModal" this))}}>Добавить {{component.single}}</button>
+      <button class="btn btn-default" {{action (pipe (action "createComponentType" component) (toggle "showAddComponentTypeModal" this))}}>Добавить</button>
     </div>
+    {{#if category.components.length}}
+      {{components-table category=category}}
+    {{/if}}
   </div>
 {{/each}}
 

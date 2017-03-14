@@ -12,6 +12,10 @@ module.exports = function(sequelize, DataTypes) {
           foreignKey: 'categoryId',
           onUpdate: 'CASCADE',
           onDelete: 'CASCADE'
+        });
+        Component.hasMany(models.ComponentAttributeValue, {
+          foreignKey: 'componentId',
+          as: 'values'
         })
       }
     }

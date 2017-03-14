@@ -1,4 +1,4 @@
-const { Category, Component, CategoryAttribute, Attribute } = require('../models');
+const { Category, Component, CategoryAttribute } = require('../models');
 
 module.exports = {
   async get(req, res, next) {

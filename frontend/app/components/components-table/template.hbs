@@ -2,15 +2,20 @@
   <thead>
   <tr>
     <th>Id</th>
+    <th>Наименование</th>
     {{#each category.attributes as |attribute|}}
       <th>{{attribute.title}}</th>
     {{/each}}
   </tr>
   </thead>
   <tbody>
-  <tr>
-    <td>1</td>
-    <td>2</td>
-    <td>3</td>
-  </tr>
+    {{#each category.components as |component|}}
+      <tr>
+        <td>{{component.id}}</td>
+        <td>{{component.title}}</td>
+        {{#each component.values as |value|}}
+          <td>{{value.value}}</td>
+        {{/each}}
+      </tr>
+    {{/each}}
   </tbody>

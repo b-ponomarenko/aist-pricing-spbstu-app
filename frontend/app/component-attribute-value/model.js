@@ -3,5 +3,5 @@ import {attr, belongsTo} from "ember-computed-decorators/ember-data";
 
 export default Model.extend({
   @attr('string') value,
-  @belongsTo('attribute') attribute
+  @belongsTo('attribute', { async: true }) attribute
 });

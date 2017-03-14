@@ -1,6 +1,6 @@
 <div class="row ai-m-b--l">
   <div class="col-xs-12 text-right">
-    <button class="btn btn-primary" {{action (pipe (action "createComponent") (toggle "showAddComponentModal" this))}}>
+    <button class="btn btn-primary" {{action (pipe (action "createCategory") (toggle "showAddCategoryModal" this))}}>
       Добавить категорию
     </button>
   </div>
@@ -10,7 +10,7 @@
   <div class="row middle-xs ai-m-b--s">
     <h2 class="col-xs">{{category.title}}</h2>
     <div>
-      <button class="btn btn-default" {{action (pipe (action "createComponentType" component) (toggle "showAddComponentTypeModal" this))}}>Добавить</button>
+      <button class="btn btn-default" {{action (pipe (action "createComponent" category) (toggle "showAddComponentModal" this))}}>Добавить</button>
     </div>
     {{#if category.components.length}}
       {{components-table category=category}}
@@ -18,48 +18,42 @@
   </div>
 {{/each}}
 
-{{#if showAddComponentModal}}
+{{#if showAddCategoryModal}}
   {{#modals/centered-modal
-      headerText="Добавить новый вид комплектующих"
-      close=(action (toggle "showAddComponentModal" this))
-      save=(action "saveComponent")
+      headerText="Добавить новую категорию"
+      close=(action (toggle "showAddCategoryModal" this))
+      save=(action "saveCategory")
   }}
     <div class="row ai-m-b--s middle-xs">
       <div class="col-xs-3">Название</div>
       <div class="col-xs-9">
-        {{input value=newComponent.title class="form-control" placeholder="Введите название комплектующего изделия"}}
-      </div>
-    </div>
-    <div class="row ai-m-b--s middle-xs">
-      <div class="col-xs-3">Единственное число</div>
-      <div class="col-xs-9">
-        {{input value=newComponent.single class="form-control" placeholder="Введите название комплектующего изделия в единственном числе"}}
+        {{input value=newCategory.title class="form-control" placeholder="Введите название комплектующего изделия"}}
       </div>
     </div>
     <div class="row">
       <h4>Введите необходимые параметры комплектующего изделия</h4>
     </div>
-    {{params-list component=newComponent}}
+    {{params-list category=newCategory}}
   {{/modals/centered-modal}}
 {{/if}}
 
-{{#if showAddComponentTypeModal}}
+{{#if showAddComponentModal}}
   {{#modals/centered-modal
-      headerText="Добавить новый тип комплектующих"
-      close=(action (toggle "showAddComponentTypeModal" this))
-      save=(action "saveComponentType")
+      headerText="Добавить новую компоненту"
+      close=(action (toggle "showAddComponentModal" this))
+      save=(action "saveComponent")
   }}
     <div class="row ai-m-b--s middle-xs">
       <div class="col-xs-3">Наименование</div>
       <div class="col-xs-9">
-        {{input value=newComponentType.title class="form-control" placeholder="Введите наименование"}}
+        {{input value=newComponent.title class="form-control" placeholder="Введите наименование"}}
       </div>
     </div>
-    {{#each componentFields as |componentField|}}
+    {{#each newComponent.values as |value|}}
       <div class="row ai-m-b--s middle-xs">
-        <div class="col-xs-3">{{componentField.title}}</div>
+        <div class="col-xs-3">{{value.attribute.title}}</div>
         <div class="col-xs-9">
-          <input value={{get newComponentType componentField.name}} class="form-control" oninput={{action (mut (get newComponentType componentField.name)) value="target.value"}}>
+          {{input value=value.value class="form-control"}}
         </div>
       </div>
     {{/each}}

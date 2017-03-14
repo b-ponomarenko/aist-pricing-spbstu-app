@@ -1,39 +1,43 @@
 import Ember from "ember";
-import {oneWay, map} from "ember-computed-decorators";
+import {oneWay} from "ember-computed-decorators";
 
 const {
   Controller,
   get,
+  inject: { service },
   set
 } = Ember;
 
 export default Controller.extend({
-  newComponent: null,
+  store: service(),
+
+  newCategory: null,
 
   @oneWay('model.categories') categories,
 
-  @map('componentModel.fields', function(fields) {
-      const title = get(fields, 'title');
-      const name = get(fields, 'name');
-      return { title, name };
-  }) componentFields,
-
   actions: {
-    createComponent() {
-      set(this, 'newComponent', {});
+    createCategory() {
+      set(this, 'newCategory', {});
     },
-    createComponentType(componentModel) {
-      debugger;
-      set(this, 'newComponentType', { component: get(componentModel, 'id') });
-      set(this, 'componentModel', componentModel);
+    createComponent(category) {
+      const attributes = get(category, 'attributes');
+      const values = attributes.map((attribute) => {
+        return get(this, 'store').createRecord('component-attribute-value', {
+          attribute
+        })
+      });
+      set(this, 'newComponent', {
+        values,
+        category
+      });
+    },
+    async saveCategory() {
+      const category = get(this, 'newCategory');
+      await get(this, 'store').createRecord('category', category).save();
     },
     async saveComponent() {
       const component = get(this, 'newComponent');
-      await get(this, 'store').createRecord('component', component).save();
-    },
-    async saveComponentType() {
-      const componentType = get(this, 'newComponentType');
-      get(this, 'store').createRecord('component-type', componentType).save();
+      get(this, 'store').createRecord('component', component).save();
     }
   }
 });

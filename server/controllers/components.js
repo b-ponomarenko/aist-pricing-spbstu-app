@@ -1,6 +1,21 @@
 const { Component, ComponentAttributeValue } = require('../models');
 
 module.exports = {
+  async saveComponentValue(req, res) {
+    const { attribute, value } = req.body.attributeValue;
+    try {
+      const componentId = req.params.componentId;
+      const attributeValue = await ComponentAttributeValue.create({
+        componentId,
+        value,
+        attributeId: attribute
+      });
+      res.json({ attributeValue });
+    } catch (e) {
+      res.json(e, 500);
+    }
+  },
+
   async getById(req, res, next) {
     try {
       let component = await Component
@@ -8,40 +23,26 @@ module.exports = {
           attributes: ['id', 'title'],
           include: [{
             model: ComponentAttributeValue,
-            as: 'values',
-            attributes: ['id', 'value', 'attributeId']
+            as: 'values'
           }]
         });
 
       return res.json({ component });
     } catch (e) {
-      return res.send(e);
+      return res.send(e, 500);
     }
   },
 
   async save(
     {
       body: {
-        component: { title, values, category }
+        component: { title, category }
       }
     },
     res) {
     try {
       let component = await Component.create({ title, categoryId: category });
-      values = await Promise.all(values.map(async ({ attribute, value }) => {
-        const componentAttributeValue = await ComponentAttributeValue.create({
-          value,
-          attributeId: attribute,
-          componentId: component.id
-        });
-        return {
-          attributeId: attribute,
-          id: componentAttributeValue.id,
-          value: componentAttributeValue.value
-        }
-      }));
       component = {
-        // values,
         category,
         id: component.id,
         title: component.title

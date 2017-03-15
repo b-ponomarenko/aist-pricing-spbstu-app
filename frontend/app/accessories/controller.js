@@ -22,7 +22,7 @@ export default Controller.extend({
     createComponent(category) {
       const attributes = get(category, 'attributes');
       const values = attributes.map((attribute) => {
-        return get(this, 'store').createRecord('component-attribute-value', {
+        return get(this, 'store').createRecord('attribute-value', {
           attribute
         })
       });
@@ -37,7 +37,7 @@ export default Controller.extend({
     },
     async saveComponent() {
       const component = get(this, 'newComponent');
-      get(this, 'store').createRecord('component', component).save();
+      get(this, 'store').createRecord('component', component).saveWithValues();
     }
   }
 });

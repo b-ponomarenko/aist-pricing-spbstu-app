@@ -1,0 +1,41 @@
+<div class="row ai-m-b--l">
+  <div class="col-xs-12 text-right">
+    <button class="btn btn-primary" {{action
+        (pipe (action "createAttributeArray") (toggle "showCreateAttributesModal" this))}}>
+      Добавить атрибуты
+    </button>
+  </div>
+</div>
+
+<table class="table table-hover table-bordered">
+  <thead>
+  <tr>
+    <th>№</th>
+    <th>Наименование</th>
+  </tr>
+  </thead>
+  <tbody>
+  {{#each attributes as |attribute index|}}
+    <tr>
+      <td>{{inc index 1}}</td>
+      <td>{{attribute.title}}</td>
+    </tr>
+  {{/each}}
+  </tbody>
+</table>
+
+{{#if showCreateAttributesModal}}
+  {{#modals/centered-modal
+      headerText="Добавить аттрибуты"
+      close=(action (toggle "showCreateAttributesModal" this))
+      save=(action "saveAttributes")
+  }}
+    {{#params-list
+        header="Наименование атрибута"
+        array=newAttributes
+        as |list|
+    }}
+      {{input value=list.item.title class="form-control" placeholder="Введите название комплектующего изделия"}}
+    {{/params-list}}
+  {{/modals/centered-modal}}
+{{/if}}

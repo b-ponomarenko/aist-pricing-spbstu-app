@@ -1,7 +1,18 @@
 const { Attribute } = require('../models');
 
 module.exports = {
-  async getById(req, res, next) {
+  async get(req, res) {
+    try {
+      const attributes = await Attribute.findAll({
+        attributes: ['id', 'title']
+      });
+      res.json({ attributes });
+    } catch (e) {
+      res.json(e);
+    }
+  },
+
+  async getById(req, res) {
     try {
       let attribute = await Attribute
         .findById(req.params.attributeId, {
@@ -17,11 +28,27 @@ module.exports = {
   async save(
     {
       body: {
-        component: { title, fields }
+        attribute: { title }
       }
     },
     res) {
     try {
+      const attribute = await Attribute.create({ title });
+      res.json({ attribute });
+    } catch (e) {
+      res.json(e, 500);
+    }
+  },
+
+  async deleteById(req, res) {
+    try {
+      console.log(req.params.attributeId);
+      await Attribute.destroy({
+        where: {
+          id: req.params.attributeId
+        }
+      });
+
       res.json({});
     } catch (e) {
       res.json(e, 500);

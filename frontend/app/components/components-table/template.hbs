@@ -1,7 +1,7 @@
 
   <thead>
   <tr>
-    <th>Id</th>
+    <th>№</th>
     <th>Наименование</th>
     {{#each category.attributes as |attribute|}}
       <th>{{attribute.title}}</th>
@@ -9,9 +9,9 @@
   </tr>
   </thead>
   <tbody>
-    {{#each category.components as |component|}}
+    {{#each category.components as |component index|}}
       <tr>
-        <td>{{component.id}}</td>
+        <td>{{inc index 1}}</td>
         <td>{{component.title}}</td>
         {{#each component.values as |value|}}
           <td>{{value.value}}</td>

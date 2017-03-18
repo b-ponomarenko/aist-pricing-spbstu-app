@@ -1,12 +1,12 @@
-{{#each category.fields as |field index|}}
+{{#each array as |item index|}}
   <div class="col-xs-3">
-    Название параметра
+    {{header}}
   </div>
   <div class="col-xs-7  ai-m-b--s">
-    {{input value=field.title class="form-control" placeholder="Введите название комплектующего изделия"}}
+    {{yield (hash item=item)}}
   </div>
   <div class="col-xs-2 center-xs">
     <button class="btn btn-default" {{action "addParam"}}><span class="glyphicon glyphicon-plus"></span></button>
-    <button class="btn btn-default" {{action "removeParam" field}}><span class="glyphicon glyphicon-minus"></span></button>
+    <button class="btn btn-default" {{action "removeParam" item}}><span class="glyphicon glyphicon-minus"></span></button>
   </div>
 {{/each}}

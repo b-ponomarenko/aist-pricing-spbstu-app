@@ -2,8 +2,6 @@ import Ember from "ember";
 
 export default Ember.Route.extend({
   model() {
-    return {
-      // tanks: this.store.findAll('tank')
-    }
+    return this.store.findAll('attribute');
   }
 });

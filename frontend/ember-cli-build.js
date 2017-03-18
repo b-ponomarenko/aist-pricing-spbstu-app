@@ -28,6 +28,8 @@ module.exports = function(defaults) {
 
   app.import('bower_components/bootswatch/readable/bootstrap.min.css');
   app.import('bower_components/flexboxgrid/src/css/flexboxgrid.css');
+  app.import('bower_components/toastr/toastr.js');
+  app.import('bower_components/toastr/toastr.min.css');
 
   return app.toTree();
 };

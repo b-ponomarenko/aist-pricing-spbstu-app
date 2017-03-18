@@ -1,5 +1,5 @@
-import Ember from 'ember';
-import config from './config/environment';
+import Ember from "ember";
+import config from "./config/environment";
 
 const Router = Ember.Router.extend({
   location: config.locationType,
@@ -8,6 +8,10 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('accessories');
+  this.route('attributes');
+  this.route('categories', function() {
+    this.route('show', { path: '/categories/:id' });
+  });
 });
 
 export default Router;

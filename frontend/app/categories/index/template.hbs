@@ -1,0 +1,54 @@
+<div class="row ai-m-b--l">
+  <div class="col-xs-12 text-right">
+    <button class="btn btn-primary" {{action (pipe (action "createCategory") (toggle "showAddCategoryModal" this))}}>
+      Добавить категорию
+    </button>
+  </div>
+</div>
+
+{{#each categories as |category|}}
+  <div class="row ai-m-b--s">
+    <div class="panel panel-default col-xs-12">
+      <div class="panel-body row middle-xs">
+        <h3 class="col-xs">{{category.title}}</h3>
+        <div>
+          <button class="btn btn-danger" {{action "deleteCategory" category}}>Удалить категорию</button>
+          {{#link-to "categories.show" category.id classNames="btn btn-default" tagName="button"}}Открыть{{/link-to}}
+        </div>
+      </div>
+    </div>
+  </div>
+{{/each}}
+
+{{#if showAddCategoryModal}}
+  {{#modals/centered-modal
+      headerText="Добавить новую категорию"
+      close=(action (toggle "showAddCategoryModal" this))
+      save=(action "saveCategory")
+  }}
+    <div class="row ai-m-b--s middle-xs">
+      <div class="col-xs-3">Название</div>
+      <div class="col-xs-9">
+        {{input value=newCategory.title class="form-control" placeholder="Введите название комплектующего изделия"}}
+      </div>
+    </div>
+    <div class="row">
+      <h4>Введите необходимые атрибуты изделия</h4>
+    </div>
+    {{#params-list
+        header="Выберите атрибут"
+        array=newCategory.attributes
+        as |p|
+    }}
+      {{#power-select
+          options=attributes
+          selected=p.item
+          onchange=(action "chooseAttribute" p.item)
+      as |attribute|
+      }}
+        {{attribute.title}}
+      {{/power-select}}
+    {{/params-list}}
+  {{/modals/centered-modal}}
+{{/if}}
+

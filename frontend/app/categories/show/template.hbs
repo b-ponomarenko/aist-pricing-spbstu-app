@@ -1,0 +1,32 @@
+<div class="row ai-m-b--s end-xs">
+  <button class="btn btn-default" {{action
+      (pipe (action "createComponent" category) (toggle "showAddComponentModal" this))}}>Добавить
+  </button>
+</div>
+
+{{#if category.components.length}}
+  {{components-table category=category}}
+{{/if}}
+
+{{#if showAddComponentModal}}
+  {{#modals/centered-modal
+      headerText="Добавить новую компоненту"
+      close=(action (toggle "showAddComponentModal" this))
+      save=(action "saveComponent")
+  }}
+    <div class="row ai-m-b--s middle-xs">
+      <div class="col-xs-3">Наименование</div>
+      <div class="col-xs-9">
+        {{input value=newComponent.title class="form-control" placeholder="Введите наименование"}}
+      </div>
+    </div>
+    {{#each newComponent.values as |value|}}
+      <div class="row ai-m-b--s middle-xs">
+        <div class="col-xs-3">{{value.attribute.title}}</div>
+        <div class="col-xs-9">
+          {{input value=value.value class="form-control"}}
+        </div>
+      </div>
+    {{/each}}
+  {{/modals/centered-modal}}
+{{/if}}

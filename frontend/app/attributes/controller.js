@@ -33,6 +33,25 @@ export default Ember.Controller.extend({
         }
       });
       set(this, 'newAttributes', null);
+    },
+
+    async saveAttribute(attribute) {
+      try {
+        await attribute.save();
+      } catch (e) {
+        attribute.rollbackAttributes();
+        get(this, 'notification').error(e);
+      }
+      set(attribute, 'isEditing', false);
+    },
+
+    editAttribute(attribute) {
+      set(attribute, 'isEditing', true);
+    },
+
+    cancelChanges(attribute) {
+      attribute.rollbackAttributes();
+      set(attribute, 'isEditing', false);
     }
   }
 });

@@ -11,9 +11,9 @@ export default DS.RESTAdapter.extend({
     switch (requestType) {
       case "createRecord":
         return `/components/${get(snapshot.record, 'component.id')}/${pluralize(modelName)}`;
+      case "updateRecord":
       case "findRecord":
         return `/${pluralize(modelName)}/${id}`;
     }
-
   }
 });

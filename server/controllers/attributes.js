@@ -53,5 +53,16 @@ module.exports = {
     } catch (e) {
       res.json(e, 500);
     }
-  }
+  },
+
+  async update(req, res) {
+    try {
+      let attribute = await Attribute.findById(req.params.attributeId);
+      attribute.set('title', req.body.attribute.title);
+      await attribute.save();
+      res.json({ attribute });
+    } catch (e) {
+      res.json(e);
+    }
+  },
 };

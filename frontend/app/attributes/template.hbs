@@ -18,7 +18,27 @@
   {{#each attributes as |attribute index|}}
     <tr>
       <td>{{inc index 1}}</td>
-      <td>{{attribute.title}}</td>
+      <td>
+        <div class="row">
+          <div class="col-xs-6">
+            {{#if attribute.isEditing}}
+              {{input value=attribute.title class="form-control"}}
+            {{else}}
+              {{attribute.title}}
+            {{/if}}
+          </div>
+          <div class="col-xs-6 text-right">
+            {{#if attribute.isEditing}}
+              <div class="btn-group btn-group-sm" role="group" aria-label="...">
+                <button type="button" class="btn btn-default" {{action "saveAttribute" attribute}}><span class="glyphicon glyphicon-ok"></span></button>
+                <button type="button" class="btn btn-default" {{action "cancelChanges" attribute}}><span class="glyphicon glyphicon-remove"></span></button>
+              </div>
+            {{else}}
+              <div class="btn btn-default btn-sm" {{action "editAttribute" attribute}}><span class="glyphicon glyphicon-pencil"></span></div>
+            {{/if}}
+          </div>
+        </div>
+      </td>
     </tr>
   {{/each}}
   </tbody>

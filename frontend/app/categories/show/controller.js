@@ -18,16 +18,33 @@ export default Ember.Controller.extend({
           attribute
         })
       });
-      set(this, 'newComponent', {
+      set(this, 'selectedComponent', {
         values,
         category
       });
     },
 
+    chooseComponent(component) {
+      set(this, 'selectedComponent', component);
+    },
+
     async saveComponent() {
-      const component = get(this, 'newComponent');
+      const component = get(this, 'selectedComponent');
       try {
-        await get(this, 'store').createRecord('component', component).saveWithValues();
+        if ( component instanceof get(this, 'store').modelFor('component') ) {
+          await component.saveWithValues();
+        } else {
+          await get(this, 'store').createRecord('component', component).saveWithValues();
+        }
+      } catch (e) {
+        get(this, 'notification').error(e);
+      }
+      set(this, 'selectedComponent', null);
+    },
+
+    async deleteComponent(component) {
+      try {
+        await component.destroyRecord();
       } catch (e) {
         get(this, 'notification').error(e);
       }

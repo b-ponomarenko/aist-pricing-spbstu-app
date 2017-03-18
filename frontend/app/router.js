@@ -10,7 +10,8 @@ Router.map(function() {
   this.route('accessories');
   this.route('attributes');
   this.route('categories', function() {
-    this.route('show', { path: '/categories/:id' });
+    this.route('index', { path: '' });
+    this.route('show', { path: '/:id' });
   });
 });
 

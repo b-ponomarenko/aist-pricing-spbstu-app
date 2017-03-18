@@ -15,6 +15,18 @@ module.exports = {
     }
   },
 
+  async update(req, res) {
+    const componentValueId = req.params.componentValueId;
+    try {
+      let attributeValue = await ComponentAttributeValue.findById(componentValueId);
+      attributeValue.set('value', req.body.attributeValue.value);
+      await attributeValue.save();
+      res.json({ attributeValue });
+    } catch (e) {
+      res.json(e);
+    }
+  },
+
   async getById(req, res) {
     try {
       const valueId = req.params.valueId;

@@ -6,16 +6,20 @@
     {{#each category.attributes as |attribute|}}
       <th>{{attribute.title}}</th>
     {{/each}}
+    <td></td>
+    <td></td>
   </tr>
   </thead>
   <tbody>
-    {{#each category.components as |component index|}}
+    {{#each (sort-by "id" category.components) as |component index|}}
       <tr>
         <td>{{inc index 1}}</td>
         <td>{{component.title}}</td>
         {{#each component.values as |value|}}
           <td>{{value.value}}</td>
         {{/each}}
+        <td class="text-center"><span class="glyphicon glyphicon-pencil" {{action onEdit component}}></span></td>
+        <td class="text-center"><span class="glyphicon glyphicon-trash" {{action onDelete component}}></span></td>
       </tr>
     {{/each}}
   </tbody>

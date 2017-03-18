@@ -27,6 +27,22 @@ module.exports = function(defaults) {
   // along with the exports of each module as its value.
 
   app.import('bower_components/bootswatch/readable/bootstrap.min.css');
+  app.import('bower_components/bootswatch/fonts/glyphicons-halflings-regular.eot', {
+    destDir: 'fonts'
+  });
+  app.import('bower_components/bootswatch/fonts/glyphicons-halflings-regular.svg', {
+    destDir: 'fonts'
+  });
+  app.import('bower_components/bootswatch/fonts/glyphicons-halflings-regular.ttf', {
+    destDir: 'fonts'
+  });
+  app.import('bower_components/bootswatch/fonts/glyphicons-halflings-regular.woff', {
+    destDir: 'fonts'
+  });
+  app.import('bower_components/bootswatch/fonts/glyphicons-halflings-regular.woff2', {
+    destDir: 'fonts'
+  });
+
   app.import('bower_components/flexboxgrid/src/css/flexboxgrid.css');
   app.import('bower_components/toastr/toastr.js');
   app.import('bower_components/toastr/toastr.min.css');

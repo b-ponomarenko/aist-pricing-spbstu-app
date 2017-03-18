@@ -1,0 +1,11 @@
+.components-table {
+  .glyphicon {
+    cursor: pointer;
+    &-pencil {
+      color: grey;
+    }
+    &-trash {
+      color: red;
+    }
+  }
+}

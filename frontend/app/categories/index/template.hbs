@@ -12,7 +12,7 @@
       <div class="panel-body row middle-xs">
         <h3 class="col-xs">{{category.title}}</h3>
         <div>
-          <button class="btn btn-danger" {{action "deleteCategory" category}}>Удалить категорию</button>
+          <button class="btn btn-danger" {{action (pipe (action "chooseCategoryForDeleting" category) (toggle "showDeleteCategoryModal" this))}}>Удалить категорию</button>
           {{#link-to "categories.show" category.id classNames="btn btn-default" tagName="button"}}Открыть{{/link-to}}
         </div>
       </div>
@@ -50,5 +50,27 @@
       {{/power-select}}
     {{/params-list}}
   {{/modals/centered-modal}}
+{{/if}}
+
+{{#if showDeleteCategoryModal}}
+  {{#modal-dialog
+      targetAttachment="center"
+      translucentOverlay=true
+      container-class="centered-modal"
+      close=(toggle "showDeleteCategoryModal" this)
+  }}
+    <div class="modal-dialog centered-modal__dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true" {{action (toggle "showDeleteCategoryModal" this)}}>&times;</button>
+          <h4 class="modal-title">Вы действительно хотите удалить данную категорию?</h4>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" {{action (toggle "showDeleteCategoryModal" this)}}>Закрыть</button>
+          <button type="button" class="btn btn-danger" {{action (pipe (action "deleteCategory") (action (toggle "showDeleteCategoryModal" this)))}}>Удалить</button>
+        </div>
+      </div>
+    </div>
+  {{/modal-dialog}}
 {{/if}}
 

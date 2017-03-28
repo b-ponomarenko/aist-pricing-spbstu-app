@@ -3,6 +3,7 @@
     translucentOverlay=true
     container-class="centered-modal"
     close=close
+    renderInPlace=true
 }}
   <div class="modal-dialog centered-modal__dialog">
     <div class="modal-content">
@@ -13,10 +14,12 @@
       <div class="modal-body">
         {{yield}}
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal" {{action close}}>Закрыть</button>
-        <button type="button" class="btn btn-primary" {{action (pipe (action save) (action close))}}>Сохранить</button>
-      </div>
+      {{#if (not hideButtons)}}
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" {{action close}}>Закрыть</button>
+          <button type="button" class="btn btn-primary" {{action (pipe (action save) (action close))}}>Сохранить</button>
+        </div>
+      {{/if}}
     </div>
   </div>
 {{/modal-dialog}}

@@ -1,6 +1,7 @@
 <div class="row ai-m-b--l">
   <div class="col-xs-12 text-right">
-    <button class="btn btn-primary" {{action (pipe (action "createTank") (toggle "showAddTankModal" this))}}>Добавить
+    <button class="btn btn-primary" {{action (pipe (action "createBoiler") (toggle "showAddBoilerModal" this))}}>
+      Добавить
       бак
     </button>
   </div>
@@ -15,69 +16,160 @@
       <th>Высота обечайки</th>
       <th>Толщина стенки обечайки</th>
       <th>Высота днища</th>
+      <th>Вес</th>
+      <th>Длина змеевика</th>
     </tr>
     </thead>
     <tbody>
-    {{#each tanks as |tank|}}
+    {{#each boilers as |boiler|}}
       <tr>
-        <td>{{tank.name}}</td>
-        <td>{{tank.diameter}}</td>
-        <td>{{tank.shellHeight}}</td>
-        <td>{{tank.shellThickness}}</td>
-        <td>{{tank.bottomHeight}}</td>
+        <td>{{boiler.name}}</td>
+        <td>{{boiler.diameter}}</td>
+        <td>{{boiler.shellHeight}}</td>
+        <td>{{boiler.shellThickness}}</td>
+        <td>{{boiler.bottomHeight}}</td>
+        <td>{{boiler.weight}}</td>
+        <td>{{boiler.pipeLength}}</td>
       </tr>
     {{/each}}
     </tbody>
   </table>
 </div>
 
-{{#if showAddTankModal}}
+{{#if showAddBoilerModal}}
   {{#modals/centered-modal
       headerText="Добавить бак"
-      close=(action (toggle "showAddTankModal" this))
-      save=(action "saveTank")
+      close=(action (toggle "showAddBoilerModal" this))
+      hideButtons=true
   }}
-    <div class="row ai-m-b--s">
-      <div class="col-xs-4">Название бака</div>
-      <div class="col-xs-8">
-        {{input value=newTank.name class="form-control" placeholder="Введите название бака"}}
-      </div>
-    </div>
-    <div class="row ai-m-b--s">
-      <div class="col-xs-4">Диаметр</div>
-      <div class="col-xs-8">
-        <div class="input-group">
-          {{input value=newTank.diameter class="form-control" placeholder="Введите название бака"}}
-          <span class="input-group-addon">мм</span>
+    {{#with (changeset newBoiler BoilerValidations) as |changeset|}}
+      <div class="row ai-m-b--s {{if changeset.error.name 'has-error'}}">
+        <div class="col-xs-4">Название бака</div>
+        <div class="col-xs-8">
+          {{input value=changeset.name class="form-control" placeholder="Введите название бака"}}
+          {{#if changeset.error.name}}
+            <small>
+              <ul>
+                {{#each changeset.error.name.validation as |message|}}
+                  <li class="text-danger">{{message}}</li>
+                {{/each}}
+              </ul>
+            </small>
+          {{/if}}
         </div>
       </div>
-    </div>
-    <div class="row ai-m-b--s">
-      <div class="col-xs-4">Высота обечайки</div>
-      <div class="col-xs-8">
-        <div class="input-group">
-          {{input value=newTank.shellHeight class="form-control" placeholder="Введите высоту обечайки"}}
-          <span class="input-group-addon">мм</span>
+      <div class="row ai-m-b--s {{if changeset.error.diameter 'has-error'}}">
+        <div class="col-xs-4">Диаметр</div>
+        <div class="col-xs-8">
+          <div class="input-group">
+            {{input value=changeset.diameter class="form-control" placeholder="Введите название бака"}}
+            <span class="input-group-addon">мм</span>
+          </div>
+          {{#if changeset.error.diameter}}
+            <small>
+              <ul>
+                {{#each changeset.error.diameter.validation as |message|}}
+                  <li class="text-danger">{{message}}</li>
+                {{/each}}
+              </ul>
+            </small>
+          {{/if}}
         </div>
       </div>
-    </div>
-    <div class="row ai-m-b--s">
-      <div class="col-xs-4">Толщина стенки обечайки</div>
-      <div class="col-xs-8">
-        <div class="input-group">
-          {{input value=newTank.shellThickness class="form-control" placeholder="Введите толщину стенки обечайки"}}
-          <span class="input-group-addon">мм</span>
+      <div class="row ai-m-b--s {{if changeset.error.shellHeight 'has-error'}}">
+        <div class="col-xs-4">Высота обечайки</div>
+        <div class="col-xs-8">
+          <div class="input-group">
+            {{input value=changeset.shellHeight class="form-control" placeholder="Введите высоту обечайки"}}
+            <span class="input-group-addon">мм</span>
+          </div>
+          {{#if changeset.error.shellHeight}}
+            <small>
+              <ul>
+                {{#each changeset.error.shellHeight.validation as |message|}}
+                  <li class="text-danger">{{message}}</li>
+                {{/each}}
+              </ul>
+            </small>
+          {{/if}}
         </div>
       </div>
-    </div>
-    <div class="row ai-m-b--s">
-      <div class="col-xs-4">Высота днища</div>
-      <div class="col-xs-8">
-        <div class="input-group">
-          {{input value=newTank.bottomHeight class="form-control" placeholder="Введите высоту днища"}}
-          <span class="input-group-addon">мм</span>
+      <div class="row ai-m-b--s  {{if changeset.error.shellThickness 'has-error'}}">
+        <div class="col-xs-4">Толщина стенки обечайки</div>
+        <div class="col-xs-8">
+          <div class="input-group">
+            {{input value=changeset.shellThickness class="form-control" placeholder="Введите толщину стенки обечайки"}}
+            <span class="input-group-addon">мм</span>
+          </div>
+          {{#if changeset.error.shellThickness}}
+            <small>
+              <ul>
+                {{#each changeset.error.shellThickness.validation as |message|}}
+                  <li class="text-danger">{{message}}</li>
+                {{/each}}
+              </ul>
+            </small>
+          {{/if}}
         </div>
       </div>
-    </div>
+      <div class="row ai-m-b--s {{if changeset.error.bottomHeight 'has-error'}}">
+        <div class="col-xs-4">Высота днища</div>
+        <div class="col-xs-8">
+          <div class="input-group">
+            {{input value=changeset.bottomHeight class="form-control" placeholder="Введите высоту днища"}}
+            <span class="input-group-addon">мм</span>
+          </div>
+          {{#if changeset.error.bottomHeight}}
+            <small>
+              <ul>
+                {{#each changeset.error.bottomHeight.validation as |message|}}
+                  <li class="text-danger">{{message}}</li>
+                {{/each}}
+              </ul>
+            </small>
+          {{/if}}
+        </div>
+      </div>
+      <div class="row ai-m-b--s {{if changeset.error.weight 'has-error'}}">
+        <div class="col-xs-4">Вес</div>
+        <div class="col-xs-8">
+          <div class="input-group">
+            {{input value=changeset.weight class="form-control" placeholder="Введите высоту днища"}}
+            <span class="input-group-addon">кг</span>
+          </div>
+          {{#if changeset.error.weight}}
+            <small>
+              <ul>
+                {{#each changeset.error.weight.validation as |message|}}
+                  <li class="text-danger">{{message}}</li>
+                {{/each}}
+              </ul>
+            </small>
+          {{/if}}
+        </div>
+      </div>
+      <div class="row ai-m-b--s {{if changeset.error.pipeLength 'has-error'}}">
+        <div class="col-xs-4">Длина змеевика</div>
+        <div class="col-xs-8">
+          <div class="input-group">
+            {{input value=changeset.pipeLength class="form-control" placeholder="Введите высоту днища"}}
+            <span class="input-group-addon">м</span>
+          </div>
+          {{#if changeset.error.pipeLength}}
+            <small>
+              <ul>
+                {{#each changeset.error.weight.pipeLength as |message|}}
+                  <li class="text-danger">{{message}}</li>
+                {{/each}}
+              </ul>
+            </small>
+          {{/if}}
+        </div>
+      </div>
+      <div class="text-right">
+        <button type="button" class="btn btn-default" data-dismiss="modal" {{action (toggle "showAddBoilerModal" this)}}>Закрыть</button>
+        <button type="button" class="btn btn-primary" {{action "saveBoiler" changeset}}>Сохранить</button>
+      </div>
+    {{/with}}
   {{/modals/centered-modal}}
 {{/if}}

@@ -7,5 +7,6 @@ export default Model.extend({
   @attr('number') shellHeight,
   @attr('number') shellThickness,
   @attr('number') bottomHeight,
-  @attr('number') weight
+  @attr('number') weight,
+  @attr('number') pipeLength,
 });

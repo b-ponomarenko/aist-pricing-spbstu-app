@@ -1,5 +1,6 @@
 import Ember from "ember";
 import {oneWay} from "ember-computed-decorators";
+import BoilerValidations from "../validations/boiler";
 
 const {
   get,
@@ -8,19 +9,32 @@ const {
 } = Ember;
 
 export default Ember.Controller.extend({
+  BoilerValidations,
+
   store: service(),
+  notification: service(),
 
-  newTank: null,
+  newBoiler: null,
 
-  @oneWay('model.tanks') tanks,
+  @oneWay('model.boilers') boilers,
 
   actions: {
-    createTank() {
-      set(this, 'newTank', {});
+    createBoiler() {
+      set(this, 'newBoiler', {});
     },
-    saveTank() {
-      const tank = get(this, 'newTank');
-      get(this, 'store').createRecord('tank', tank).save();
+    async saveBoiler(changeset) {
+      const boiler = get(this, 'newBoiler');
+      try {
+        await changeset.validate();
+        if ( get(changeset, 'isInvalid') ) {
+          return ;
+        }
+        await changeset.save();
+        set(this, 'showAddBoilerModal', false);
+        await get(this, 'store').createRecord('boiler', boiler).save();
+      } catch (e) {
+        get(this, 'notification').error(e.message);
+      }
     }
   }
 });

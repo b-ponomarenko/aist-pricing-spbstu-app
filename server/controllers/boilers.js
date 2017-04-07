@@ -10,6 +10,15 @@ module.exports = {
     }
   },
 
+  async getById(req, res) {
+    try {
+      const boiler = await Boiler.findById(req.params.boilerId);
+      res.json({ boiler });
+    } catch (e) {
+      res.json(e);
+    }
+  },
+
   async save(req, res) {
     try {
       const boiler = await Boiler.create(req.body.boiler);

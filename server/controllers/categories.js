@@ -27,6 +27,7 @@ module.exports = {
 
   async get(req, res, next) {
     try {
+      let where = (req.query.title) ? { title: { $like: req.query.title } } : null;
       let categories = await Category
         .findAll({
           include: [{
@@ -36,7 +37,8 @@ module.exports = {
             model: CategoryAttribute,
             as: 'attributes',
             attributes: ['attributeId']
-          }]
+          }],
+          where
         });
 
       categories = categories.map((category) => {

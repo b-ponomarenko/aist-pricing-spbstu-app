@@ -13,6 +13,10 @@ Router.map(function() {
     this.route('index', { path: '' });
     this.route('show', { path: '/:id' });
   });
+
+  this.route('boiler', function() {
+    this.route('wizard', { path: '/wizard/:boilerId' });
+  });
 });
 
 export default Router;

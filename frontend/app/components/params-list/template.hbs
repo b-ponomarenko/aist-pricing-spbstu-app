@@ -1,12 +1,17 @@
 {{#each array as |item index|}}
-  <div class="col-xs-3">
-    {{header}}
-  </div>
-  <div class="col-xs-7  ai-m-b--s">
-    {{yield (hash item=item)}}
-  </div>
-  <div class="col-xs-2 center-xs">
-    <button class="btn btn-default" {{action "addParam"}}><span class="glyphicon glyphicon-plus"></span></button>
-    <button class="btn btn-default" {{action "removeParam" item}}><span class="glyphicon glyphicon-minus"></span></button>
+  <div class="row middle-xs ai-m-b--s">
+    {{#if header}}
+      <div class="col-xs-3">
+        {{header}}
+      </div>
+    {{/if}}
+    <div class="col-xs">
+      {{yield (hash item=item)}}
+    </div>
+    <div class="col-xs-3 center-xs">
+      <button class="btn btn-default" {{action "addParam"}}><span class="glyphicon glyphicon-plus"></span></button>
+      <button class="btn btn-default" {{action "removeParam" item}}><span class="glyphicon glyphicon-minus"></span>
+      </button>
+    </div>
   </div>
 {{/each}}

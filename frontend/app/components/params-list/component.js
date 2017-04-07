@@ -5,8 +5,6 @@ const {
 } = Ember;
 
 export default Ember.Component.extend({
-  classNames: ['row', 'middle-xs'],
-
   actions: {
     addParam() {
       const array = get(this, 'array');

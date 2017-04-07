@@ -40,14 +40,14 @@
         array=newCategory.attributes
         as |p|
     }}
-      {{#power-select
-          options=attributes
-          selected=p.item
-          onchange=(action "chooseAttribute" p.item)
-      as |attribute|
-      }}
-        {{attribute.title}}
-      {{/power-select}}
+        {{#power-select
+            options=attributes
+            selected=p.item
+            onchange=(action "chooseAttribute" p.item)
+        as |attribute|
+        }}
+          {{attribute.title}}
+        {{/power-select}}
     {{/params-list}}
   {{/modals/centered-modal}}
 {{/if}}

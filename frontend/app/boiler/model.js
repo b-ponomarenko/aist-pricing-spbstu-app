@@ -1,7 +1,8 @@
 import Model from "ember-data/model";
 import {attr} from "ember-computed-decorators/ember-data";
+import Copyable from "ember-cli-copyable";
 
-export default Model.extend({
+export default Model.extend(Copyable, {
   @attr('string') name,
   @attr('number') diameter,
   @attr('number') shellHeight,

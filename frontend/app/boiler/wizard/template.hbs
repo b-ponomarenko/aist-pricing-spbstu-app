@@ -1,0 +1,56 @@
+<h1>{{boiler.name}}</h1>
+<h3>Выберите комплектующие</h3>
+<div class="row">
+  <div class="col-xs-6">
+    <div class="panel panel-default">
+      <div class="panel-heading"><strong>Патрубки</strong></div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-xs-3">Количество</div>
+          <div class="col-xs-8">Штуцер резьбовой</div>
+        </div>
+        {{#params-list
+            array=selectedBranchPipes
+        as |p|
+        }}
+          <div class="row">
+            <div class="col-xs-4">{{input value=p.item.quantity class="form-control"}}</div>
+            <div class="col-xs-8">
+              {{#power-select
+                  options=branchPipes
+                  selected=p.item.component
+                  onchange=(action (mut p.item.component))
+                  as |pipe|
+              }}
+                {{pipe.title}}
+              {{/power-select}}
+            </div>
+          </div>
+        {{/params-list}}
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-6">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        Basic panel example
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-6">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        Basic panel example
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-6">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        Basic panel example
+      </div>
+    </div>
+  </div>
+</div>

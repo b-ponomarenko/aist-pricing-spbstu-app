@@ -23,13 +23,13 @@
     <tbody>
     {{#each boilers as |boiler|}}
       <tr>
-        <td>{{boiler.name}}</td>
-        <td>{{boiler.diameter}}</td>
-        <td>{{boiler.shellHeight}}</td>
-        <td>{{boiler.shellThickness}}</td>
-        <td>{{boiler.bottomHeight}}</td>
-        <td>{{boiler.weight}}</td>
-        <td>{{boiler.pipeLength}}</td>
+        {{#link-to "boiler.wizard" boiler.id tagName="td"}}{{boiler.name}}{{/link-to}}
+        {{#link-to "boiler.wizard" boiler.id tagName="td"}}{{boiler.diameter}}{{/link-to}}
+        {{#link-to "boiler.wizard" boiler.id tagName="td"}}{{boiler.shellHeight}}{{/link-to}}
+        {{#link-to "boiler.wizard" boiler.id tagName="td"}}{{boiler.shellThickness}}{{/link-to}}
+        {{#link-to "boiler.wizard" boiler.id tagName="td"}}{{boiler.bottomHeight}}{{/link-to}}
+        {{#link-to "boiler.wizard" boiler.id tagName="td"}}{{boiler.weight}}{{/link-to}}
+        {{#link-to "boiler.wizard" boiler.id tagName="td"}}{{boiler.pipeLength}}{{/link-to}}
       </tr>
     {{/each}}
     </tbody>

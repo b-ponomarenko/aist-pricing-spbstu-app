@@ -18,8 +18,5 @@ export default {
   }),
   weight: validateNumber({
     positive: true, message: 'Значение веса должно быть больше нуля'
-  }),
-  pipeLength: validateNumber({
-    positive: true, message: 'Значение длины змеевика должно быть больше нуля'
   })
 }

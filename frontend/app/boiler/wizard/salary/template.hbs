@@ -1,0 +1,49 @@
+<h1>{{boiler.name}}</h1>
+<h3>Затраты на зарплаты</h3>
+<table class="table table-bordered">
+  <tbody>
+  {{#each configurations as |configuration index|}}
+    {{log configuration.price}}
+    <tr>
+      <td colspan="4">
+        <strong>{{configuration.component.category.title}}</strong>
+      </td>
+    </tr>
+    <tr>
+      <td>Наименование</td>
+      <td>Цена</td>
+      <td>Коэффициент работы</td>
+      <td>Итого</td>
+    </tr>
+    <tr>
+      <td>
+        {{configuration.component.title}}
+      </td>
+      <td>
+         {{configuration.price}} &#8381;
+      </td>
+      <td>
+        {{input value=(array-index salary index) class="form-control"}}
+      </td>
+      <td>
+        {{mult value.value configuration.quantity (array-index salary index)}}
+      </td>
+    </tr>
+  {{/each}}
+  <tr>
+    <td colspan="4"><strong>Сборка</strong></td>
+  </tr>
+  <tr>
+    <td>Наименование</td>
+    <td>Цена</td>
+    <td>Коэффициент работы</td>
+    <td>Итого</td>
+  </tr>
+  <tr>
+    <td>Сборка (часть 1)</td>
+    <td>{{boiler.materials}} &#8381;</td>
+    <td></td>
+    <td></td>
+  </tr>
+  </tbody>
+</table>

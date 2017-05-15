@@ -28,6 +28,12 @@ export default Ember.Controller.extend({
       set(this, 'selectedComponent', component);
     },
 
+    resetComponentChanges() {
+      const component = get(this, 'selectedComponent');
+      if ( component )
+        get(this, 'selectedComponent').rollbackAllAttributes();
+    },
+
     async saveComponent() {
       const component = get(this, 'selectedComponent');
       try {

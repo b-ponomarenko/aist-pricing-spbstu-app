@@ -1,0 +1,115 @@
+<h1>{{boiler.name}}</h1>
+<h3>Выберите комплектующие</h3>
+<div class="row">
+  <div class="col-xs-6">
+    <div class="panel panel-default">
+      <div class="panel-heading"><strong>Патрубки</strong></div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-xs-3">Количество</div>
+          <div class="col-xs-8">Штуцер резьбовой</div>
+        </div>
+        {{#params-list
+            array=selectedBranchPipes
+        as |p|
+        }}
+          <div class="row">
+            <div class="col-xs-4">{{input value=p.item.quantity class="form-control"}}</div>
+            <div class="col-xs-8">
+              {{#power-select
+                  options=branchPipes
+                  selected=p.item.component
+                  onchange=(action (mut p.item.component))
+                  as |pipe|
+              }}
+                {{pipe.title}}
+              {{/power-select}}
+            </div>
+          </div>
+        {{/params-list}}
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-6">
+    <div class="panel panel-default">
+      <div class="panel-heading"><strong>Люки</strong></div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-xs-3">Количество</div>
+          <div class="col-xs-8">Люк</div>
+        </div>
+        {{#params-list
+            array=selectedHatches
+        as |p|
+        }}
+          <div class="row">
+            <div class="col-xs-4">{{input value=p.item.quantity class="form-control"}}</div>
+            <div class="col-xs-8">
+              {{#power-select
+                  options=hatches
+                  selected=p.item.component
+                  onchange=(action (mut p.item.component))
+              as |hatch|
+              }}
+                {{hatch.title}}
+              {{/power-select}}
+            </div>
+          </div>
+        {{/params-list}}
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-6">
+    <div class="panel panel-default">
+      <div class="panel-heading"><strong>Опоры</strong></div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-xs-3">Количество</div>
+          <div class="col-xs-8">Опора</div>
+        </div>
+          <div class="row">
+            <div class="col-xs-3">{{input value=selectedSupport.quantity class="form-control"}}</div>
+            <div class="col-xs-8">
+              {{#power-select
+                  options=supports
+                  selected=support
+                  onchange=(action "selectSupport")
+              as |support|
+              }}
+                {{support.title}}
+              {{/power-select}}
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-6">
+    <div class="panel panel-default">
+      <div class="panel-heading"><strong>Змеевики</strong></div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-xs-3">Длина</div>
+          <div class="col-xs-8">Змеевик</div>
+        </div>
+        <div class="row">
+          <div class="col-xs-3">{{input value=selectedPipe.quantity class="form-control"}}</div>
+          <div class="col-xs-8">
+            {{#power-select
+                options=pipes
+                selected=pipe
+                onchange=(action "selectPipe")
+            as |pipe|
+            }}
+              {{pipe.title}}
+            {{/power-select}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="text-right">
+  <button class="btn btn-success" {{action "nextStep"}}>Далее</button>
+</div>

@@ -1,0 +1,6 @@
+INSERT INTO public."Configurations" (id, quantity, "boilerId", "componentId", "createdAt", "updatedAt") VALUES (7, 3, 3, 4, '2017-05-08 23:48:51.545000', '2017-05-08 23:48:51.545000');
+INSERT INTO public."Configurations" (id, quantity, "boilerId", "componentId", "createdAt", "updatedAt") VALUES (8, 4, 3, 6, '2017-05-08 23:48:51.546000', '2017-05-08 23:48:51.546000');
+INSERT INTO public."Configurations" (id, quantity, "boilerId", "componentId", "createdAt", "updatedAt") VALUES (9, 2, 3, 7, '2017-05-08 23:48:51.558000', '2017-05-08 23:48:51.558000');
+INSERT INTO public."Configurations" (id, quantity, "boilerId", "componentId", "createdAt", "updatedAt") VALUES (10, 1, 3, 13, '2017-05-08 23:48:51.572000', '2017-05-08 23:48:51.572000');
+INSERT INTO public."Configurations" (id, quantity, "boilerId", "componentId", "createdAt", "updatedAt") VALUES (11, 24, 3, 21, '2017-05-08 23:48:51.575000', '2017-05-08 23:48:51.575000');
+INSERT INTO public."Configurations" (id, quantity, "boilerId", "componentId", "createdAt", "updatedAt") VALUES (12, 3, 3, 16, '2017-05-08 23:48:51.577000', '2017-05-08 23:48:51.577000');

@@ -15,7 +15,7 @@
 {{#if showComponentModal}}
   {{#modals/centered-modal
       headerText="Добавить новую компоненту"
-      close=(action (toggle "showComponentModal" this))
+      close=(action (pipe (action "resetComponentChanges") (action (toggle "showComponentModal" this))))
       save=(action "saveComponent")
   }}
     <div class="row ai-m-b--s middle-xs">

@@ -27,12 +27,32 @@ module.exports = function(sequelize, DataTypes) {
     },
     pipeLength: {
       type: DataTypes.DOUBLE,
-      allowNull: false
+      allowNull: true
     },
+    shellPrice: {
+      type: DataTypes.DOUBLE,
+      allowNull: true
+    },
+    bottomPrice: {
+      type: DataTypes.DOUBLE,
+      allowNull: true
+    },
+    refusePrice: {
+      type: DataTypes.DOUBLE,
+      allowNull: false
+    }
   }, {
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
+        Boiler.hasMany(models.Configuration, {
+          foreignKey: 'boilerId',
+          as: 'configurations'
+        });
+        Boiler.belongsTo(models.Component, {
+          foreignKey: 'metal',
+          onUpdate: 'CASCADE',
+          onDelete: 'CASCADE'
+        })
       }
     }
   });

@@ -37,8 +37,7 @@ module.exports = {
             model: CategoryAttribute,
             as: 'attributes',
             attributes: ['attributeId']
-          }],
-          where
+          }]
         });
 
       categories = categories.map((category) => {

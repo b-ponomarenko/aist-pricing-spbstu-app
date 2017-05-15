@@ -15,7 +15,10 @@ Router.map(function() {
   });
 
   this.route('boiler', function() {
-    this.route('wizard', { path: '/wizard/:boilerId' });
+    this.route('wizard', function() {
+      this.route('components', { path: '/wizard/:boilerId/components' });
+      this.route('salary', { path: '/wizard/:boilerId/salary' })
+    });
   });
 });
 

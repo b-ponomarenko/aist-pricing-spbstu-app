@@ -9,6 +9,7 @@ const components = require('./routes/components');
 const attributes = require('./routes/attributes');
 const attributeValues = require('./routes/component-attribute-values');
 const boilers = require('./routes/boilers');
+const configurations = require('./routes/configurations');
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.use('/components', components);
 app.use('/attributes', attributes);
 app.use('/attribute-values', attributeValues);
 app.use('/boilers', boilers);
+app.use('/configurations', configurations);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

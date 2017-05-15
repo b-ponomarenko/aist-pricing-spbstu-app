@@ -1,0 +1,14 @@
+INSERT INTO public."CategoryAttributes" (id, "createdAt", "updatedAt", "attributeId", "categoryId") VALUES (2, '2017-03-31 00:50:12.120000', '2017-03-31 00:50:12.120000', 3, 2);
+INSERT INTO public."CategoryAttributes" (id, "createdAt", "updatedAt", "attributeId", "categoryId") VALUES (3, '2017-04-08 00:27:05.027000', '2017-04-08 00:27:05.027000', 6, 3);
+INSERT INTO public."CategoryAttributes" (id, "createdAt", "updatedAt", "attributeId", "categoryId") VALUES (4, '2017-04-08 00:27:05.027000', '2017-04-08 00:27:05.027000', 3, 3);
+INSERT INTO public."CategoryAttributes" (id, "createdAt", "updatedAt", "attributeId", "categoryId") VALUES (5, '2017-04-11 17:28:20.453000', '2017-04-11 17:28:20.453000', 5, 4);
+INSERT INTO public."CategoryAttributes" (id, "createdAt", "updatedAt", "attributeId", "categoryId") VALUES (6, '2017-04-11 17:42:51.117000', '2017-04-11 17:42:51.117000', 3, 5);
+INSERT INTO public."CategoryAttributes" (id, "createdAt", "updatedAt", "attributeId", "categoryId") VALUES (7, '2017-04-11 17:42:51.117000', '2017-04-11 17:42:51.117000', 4, 5);
+INSERT INTO public."CategoryAttributes" (id, "createdAt", "updatedAt", "attributeId", "categoryId") VALUES (8, '2017-04-15 00:08:17.588000', '2017-04-15 00:08:17.588000', 3, 6);
+INSERT INTO public."CategoryAttributes" (id, "createdAt", "updatedAt", "attributeId", "categoryId") VALUES (9, '2017-04-15 12:08:06.524000', '2017-04-15 12:08:06.524000', 3, 7);
+INSERT INTO public."CategoryAttributes" (id, "createdAt", "updatedAt", "attributeId", "categoryId") VALUES (10, '2017-04-15 12:08:06.525000', '2017-04-15 12:08:06.525000', 9, 7);
+INSERT INTO public."CategoryAttributes" (id, "createdAt", "updatedAt", "attributeId", "categoryId") VALUES (11, '2017-04-15 12:08:06.525000', '2017-04-15 12:08:06.525000', 7, 7);
+INSERT INTO public."CategoryAttributes" (id, "createdAt", "updatedAt", "attributeId", "categoryId") VALUES (12, '2017-04-15 12:08:06.525000', '2017-04-15 12:08:06.525000', 8, 7);
+INSERT INTO public."CategoryAttributes" (id, "createdAt", "updatedAt", "attributeId", "categoryId") VALUES (13, '2017-04-15 12:08:06.525000', '2017-04-15 12:08:06.525000', 5, 7);
+INSERT INTO public."CategoryAttributes" (id, "createdAt", "updatedAt", "attributeId", "categoryId") VALUES (14, '2017-04-15 12:08:06.525000', '2017-04-15 12:08:06.525000', 4, 7);
+INSERT INTO public."CategoryAttributes" (id, "createdAt", "updatedAt", "attributeId", "categoryId") VALUES (15, '2017-04-15 12:21:02.730000', '2017-04-15 12:21:02.730000', 3, 8);

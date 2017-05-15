@@ -17,19 +17,17 @@
       <th>Толщина стенки обечайки</th>
       <th>Высота днища</th>
       <th>Вес</th>
-      <th>Длина змеевика</th>
     </tr>
     </thead>
     <tbody>
     {{#each boilers as |boiler|}}
       <tr>
-        {{#link-to "boiler.wizard" boiler.id tagName="td"}}{{boiler.name}}{{/link-to}}
-        {{#link-to "boiler.wizard" boiler.id tagName="td"}}{{boiler.diameter}}{{/link-to}}
-        {{#link-to "boiler.wizard" boiler.id tagName="td"}}{{boiler.shellHeight}}{{/link-to}}
-        {{#link-to "boiler.wizard" boiler.id tagName="td"}}{{boiler.shellThickness}}{{/link-to}}
-        {{#link-to "boiler.wizard" boiler.id tagName="td"}}{{boiler.bottomHeight}}{{/link-to}}
-        {{#link-to "boiler.wizard" boiler.id tagName="td"}}{{boiler.weight}}{{/link-to}}
-        {{#link-to "boiler.wizard" boiler.id tagName="td"}}{{boiler.pipeLength}}{{/link-to}}
+        {{#link-to "boiler.wizard.components" boiler.id tagName="td"}}{{boiler.name}}{{/link-to}}
+        {{#link-to "boiler.wizard.components" boiler.id tagName="td"}}{{boiler.diameter}}{{/link-to}}
+        {{#link-to "boiler.wizard.components" boiler.id tagName="td"}}{{boiler.shellHeight}}{{/link-to}}
+        {{#link-to "boiler.wizard.components" boiler.id tagName="td"}}{{boiler.shellThickness}}{{/link-to}}
+        {{#link-to "boiler.wizard.components" boiler.id tagName="td"}}{{boiler.bottomHeight}}{{/link-to}}
+        {{#link-to "boiler.wizard.components" boiler.id tagName="td"}}{{boiler.weight}}{{/link-to}}
       </tr>
     {{/each}}
     </tbody>
@@ -148,22 +146,17 @@
           {{/if}}
         </div>
       </div>
-      <div class="row ai-m-b--s {{if changeset.error.pipeLength 'has-error'}}">
-        <div class="col-xs-4">Длина змеевика</div>
+      <div class="row ai-m-b--s">
+        <div class="col-xs-4">Металл</div>
         <div class="col-xs-8">
-          <div class="input-group">
-            {{input value=changeset.pipeLength class="form-control" placeholder="Введите высоту днища"}}
-            <span class="input-group-addon">м</span>
-          </div>
-          {{#if changeset.error.pipeLength}}
-            <small>
-              <ul>
-                {{#each changeset.error.weight.pipeLength as |message|}}
-                  <li class="text-danger">{{message}}</li>
-                {{/each}}
-              </ul>
-            </small>
-          {{/if}}
+          {{#power-select
+              options=metal
+              selected=newBoiler.metal
+              onchange=(action (mut newBoiler.metal))
+              as |metal|
+          }}
+            {{metal.title}}
+          {{/power-select}}
         </div>
       </div>
       <div class="text-right">

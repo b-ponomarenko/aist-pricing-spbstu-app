@@ -58,7 +58,6 @@ module.exports = {
   },
 
   async updateComponentValue(req, res) {
-    const componentId = req.params.componentId;
     const componentValueId = req.params.componentValueId;
     try {
       let attributeValue = await ComponentAttributeValue.findById(componentValueId);

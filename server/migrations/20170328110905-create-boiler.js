@@ -34,7 +34,29 @@ module.exports = {
       },
       pipeLength: {
         type: Sequelize.DOUBLE,
-        allowNull: false
+        allowNull: true
+      },
+      shellPrice: {
+        type: Sequelize.DOUBLE,
+        allowNull: true
+      },
+      bottomPrice: {
+        type: Sequelize.DOUBLE,
+        allowNull: true
+      },
+      refusePrice: {
+        type: Sequelize.DOUBLE,
+        allowNull: false,
+      },
+      metal: {
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
+        references: {
+          model: 'Components',
+          key: 'id',
+          as: 'metal',
+        }
       },
       createdAt: {
         allowNull: false,

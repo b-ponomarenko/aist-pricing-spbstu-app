@@ -16,6 +16,10 @@ module.exports = function(sequelize, DataTypes) {
         Component.hasMany(models.ComponentAttributeValue, {
           foreignKey: 'componentId',
           as: 'values'
+        });
+        Component.hasMany(models.Configuration, {
+          foreignKey: 'componentId',
+          as: 'component'
         })
       }
     }

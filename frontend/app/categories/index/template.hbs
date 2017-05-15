@@ -12,7 +12,8 @@
       <div class="panel-body row middle-xs">
         <h3 class="col-xs">{{category.title}}</h3>
         <div>
-          <button class="btn btn-danger" {{action (pipe (action "chooseCategoryForDeleting" category) (toggle "showDeleteCategoryModal" this))}}>Удалить категорию</button>
+          <button class="btn btn-info"><span class="glyphicon glyphicon-pencil"></span></button>
+          <button class="btn btn-danger" {{action (pipe (action "chooseCategoryForDeleting" category) (toggle "showDeleteCategoryModal" this))}}><span class="glyphicon glyphicon-trash"></span></button>
           {{#link-to "categories.show" category.id classNames="btn btn-default" tagName="button"}}Открыть{{/link-to}}
         </div>
       </div>

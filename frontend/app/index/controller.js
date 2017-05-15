@@ -17,23 +17,26 @@ export default Ember.Controller.extend({
   newBoiler: null,
 
   @oneWay('model.boilers') boilers,
+  @oneWay('model.metal') metal,
 
   actions: {
     createBoiler() {
       set(this, 'newBoiler', {});
     },
     async saveBoiler(changeset) {
-      const boiler = get(this, 'newBoiler');
+      const newBoiler = get(this, 'newBoiler');
       try {
         await changeset.validate();
         if ( get(changeset, 'isInvalid') ) {
           return ;
         }
         await changeset.save();
+        const boiler = await get(this, 'store').createRecord('boiler', newBoiler).save();
         set(this, 'showAddBoilerModal', false);
-        await get(this, 'store').createRecord('boiler', boiler).save();
+        this.transitionToRoute('boiler.wizard.components', boiler.id);
       } catch (e) {
         get(this, 'notification').error(e.message);
+        set(this, 'showAddBoilerModal', false);
       }
     }
   }
